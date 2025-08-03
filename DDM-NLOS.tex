@@ -1,0 +1,1478 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+   \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+   \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+\usepackage{subfigmat}
+\usepackage{graphicx}
+\usepackage{mathdots}
+\usepackage{makecell}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithmicx,algorithm}
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+\usepackage[justification=centering]{caption}
+\usepackage{makecell}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\captionsetup{font={footnotesize}}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+\usepackage{soul}
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+\usepackage{mathtools}
+\makeatletter
+\renewcommand{\maketag@@@}[1]{\hbox{\m@th\normalsize\normalfont#1}}%
+\makeatother
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{A Novel Time Ratio of Arrival Based Wireless Localization Algorithm Addressing Pure NLOS-corrupted Range Measurements}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+\author{Jiangang~Wen, Wenshu~Feng, Jingyu~Hua*,~\IEEEmembership{Member,~IEEE,} Zhengwei~Ni, Yuanping~Zou, and Dongming~Wang, ~\IEEEmembership{Member,~IEEE,}%
+
+\thanks{Manuscript received Month xx, xxxx; revised Month xx, xxxx. This work was supported by the National Natural Science Foundation of China under Grant 62271445. \textit{(Corresponding author: Jingyu Hua).}}%
+\thanks{Jiangang Wen, Wenshu Feng, Jingyu Hua, Zhengwei Ni and Yuanping Zou are with the School of Information and Electronic Engineering, Zhejiang Gongshang University, Hangzhou 310018, China (e-mail: wjg1214@mail.zjgsu.edu.cn; 17395711217@163.com; eehjy@163.com; zhengwei.ni@zjgsu.edu.cn; yp\_zou@zjgsu.edu.cn).}%
+\thanks{Dongming Wang is with the National Mobile Communication Research Laboratory, Southeast University, Nanjing 210096, China (e-mail: wangdm@seu.edu.cn).}}
+
+
+% note the % following the last \IEEEmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~xx, No.~xx, August~2021}%
+% The paper headers
+%\markboth{IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS ,~Vol.~xx, No.~xx, JUN.~2021}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+Location sensing has become a hot topic in wireless communications, and precise positioning is required for many location-based services (LBS). However, in the GNSS denied areas, non-line-of-sight (NLOS) error is the biggest challenge for wireless positioning. This paper takes into account a critical scenario with only NLOS range measurements, i.e., all links between base stations (BS's) and mobile stations (MS) are NLOS corrupted. Then, the conventional localization will undergo a significant performance degradation, while it is hard to tackle such issues by a simple way. Hence, this paper adopts a distance-dependent model to approximate the NLOS error and proposes a novel positioning measurement parameter, namely the time ratio of arrival (TROA). Accordingly, an effective localization algorithm is proposed based on the TROA parameter, where the simple least squares (LS) principle is exploited. Furthermore, the analytical analysis is done in terms of the average positioning error as well as the RMSE, in which theoretical evaluations are performed under four NLOS DDMs. Finally, we verify the proposed method by computer simulation under pure NLOS mesurements, in which the proposed method produces the best performance among tested methods. Meanwhile, both simulations and analytical evaluations yield a tight consistence.
+   
+   %this paper models the NLOS error with \textcolor{red}{a} distance-dependent model, and proposes
+   \end{abstract}
+   
+   % Note that keywords are not normally used for peerreview papers.
+   \begin{IEEEkeywords}
+ wireless localization, non-line-of-sight error, time ratio of arrival, distance-dependent model, wireless communications
+   \end{IEEEkeywords}
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+%
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+%
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+%
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+%
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{W}{ith} the rapid development of wireless networks, the wireless localization technology has attracted widespread attention, especially when it is applied to intelligent scenarios such as satellite systems\cite{re1}, rail communications\cite{re2}, and vehicular networking\cite{re3,re4}. Although most commercial localization methods are assisted by GNSS \cite{re5,re6}, there are still some harsh environments that require terrestrial wireless localization, such as buildings, forests, and other GPS-denied environments \cite{re7}. Moreover, the large-scale application of Internet of Things \cite{re8} \& 5G technology \cite{re9,re10}, and the increasing number of wireless devices especially those equipped in ITS \& AVs \cite{re4,re6,re11}, have posed a higher accuracy requirement for wireless positioning. However, due to the refraction as well as the reflection by obstacles encountered during signal transmission, the delay of the received signal will seriously affect the accuracy of traditional localization algorithms \cite{re7}.
+ %5G technology and the general environment of the Internet of Things, the increasing number of wireless devices in complex environments, and the refraction as well as reflection of signals
+ %due to obstacles encountered during signal transmission cause delays in the received signals, which seriously affect the accuracy of traditional localization algorithms \cite{r4,r5,r7,r8}.
+
+
+  %resulting in delays in the received signal, which seriously affects the accuracy of traditional positioning algorithms. Nowadays, the large-scale application of 5G technology has made it an inevitable requirement for the development of wireless positioning technology to improve the accuracy of positioning in NLOS environments\cite{r6,r7,r8}.}
+% localization in wireless networks has attracted extensive attention in recent years due to its wide application in various areas. Although, most of the current positioning methods used in the market are assisted by GPS \cite{b1,b2}, there are still exist some harsh environments, such as buildings, forests and some other GPS-denied environments \cite{r10}. We collectively call these environments NLOS (non-line-of-sight) environments. In an NLOS environment, the received signals will be delayed due to the reflection and scattering of the radio waves passing through obstacles, so it will seriously affect the accuracy of traditional positioning algorithms \cite{b3,b4}.
+
+Most current location detection methods differ depending on using various signal measurements, including TOA (time of arrival) \cite{re12,re13}, AOA (angle of arrival) \cite{re14}, TDOA (time difference of arrival) \cite{re15}, RSS (received signal strength) \cite{re16,re17}, or combinations of these measurements \cite{re18,re19}. All of them will be contaminated by two main errors: the measurement noise and NLOS error. The former is always modeled as a Gaussian variable whose standard deviation is normally very small \cite{re20}. And the latter, in real cellular macro networks, the NLOS error can reach 500-700 meters \cite{re21}. Therefore, the existence of NLOS errors will be the biggest challenge in improving positioning accuracy, and the NLOS error is hard to be modeled due to its natural complexity. Thus, it has attracted considerable attention to develop various kinds of methods to mitigate the NLOS errors.
+
+A common method to reduce NLOS effect is identifying NLOS base stations. E.g., people can identify the NLOS measurement by the ranging residual\cite{re22,re23}, and then only use the identified LOS measurements to finish the positioning. The advantage of this kind of method is that it does not need to know the distribution information of NLOS error, but it requires the existence of LOS measurements, i.e., it cannot work in the pure NLOS scenario. In order to tackle this insufficiency, another kind of method localizes the MS with all ranging measurements, the effects of NLOS error can be minimized by providing proper weighting or scaling to those measurements, where the weighting or scaling is derived from the localization geometry or the residual measurements \cite{re24,re25,re26}. However, this kind of method cannot reduce the NLOS influence significantly, and it requires a remarkable complexity increase. In addition, some researchers tried to deal with the above NLOS problem by pre-implementing the NLOS statistical environment to calibrate NLOS measurements \cite{re27,re28}. Unfortunately, this kind of method is very difficult to obtain an accurate NLOS statistical model due to that some obstacle structures are added or removed in practice.
+
+Optimization tools have been applied to the wireless positioning method, where the main idea is to search for an optimal solution within the feasible region\cite{re29,re30,re31}. Specifically, Wang et al. \cite{re29} introduced a balancing parameter related to NLOS errors, so as to mitigate the negative impact of NLOS environment. However, the prior value or upper limit of this parameter would affect the final positioning accuracy. Chen et al. \cite{re32} proposed a joint estimation of MS position and balance parameter, in which they relaxed the estimation problem to second-order cone programming (SOCP) and semidefinite programming (SDP) frameworks. But this localization method required a dense network to achieve better localization performance. In general, the optimization method produces a better performance at the cost of higher complexity, and yet the influence of NLOS error cannot be thoroughly removed.
+
+According to the above discussion, it is not easy to find an accurate NLOS distribution, but it is explicit that the NLOS error must have a certain relationship with the actual BS--MS distance. In general, the larger BS--MS distance may produce the larger NLOS error with a high probability, and therefore previous literature \cite{re26,re33} defined a distance-dependent model (DDM) for NLOS error. Since the DDM has no compact constraint on NLOS error, it is suitable for general modeling of NLOS error. Accordingly, under the framework of DDM-NLOS, we propose a new positioning measurement, namely time ratio of arrival (TROA), and then construct the TROA-based positioning problem. Finally, the simple and effective least squares (LS) principle is applied to solve this problem. Moreover, analytical analyses are provided to confirm the efficiency of the proposed algorithm. Simulation results show adequate consistence to the analytical evaluation, and demonstrate that the proposed algorithm can provide precise positioning, which outperforms other tested algorithms in the pure NLOS environment. Meanwhile, the LS solution also makes the proposed method have the least complexity among the tested methods.
+
+In the remainder of this paper, the TROA based algorithm is proposed in Section II, and the analyses are presented in Section III. Finally, numerical results are presented and analyzed in Section IV, and conclusions are summarized in Section V.
+
+
+\section{The Proposed TROA Localization Algorithm}
+The most commonly used ranging parameters include TOA and TDOA. TOA can be implemented via ToF on the user terminal, thereby reducing the requirements for system synchronization\cite{re36}. In addition, there are few documents focusing TSOA (sum of two TOAs) and TPOA (product of two TOAs) \cite{re33}. In this section, we propose the new parameter TROA to improve the positioning tolerance to NLOS errors. Without loss of generality, setting the first BS to be the reference BS, and the TROA can be defined as follows.
+\begin{equation}\label{eq:2.1}
+TRO{{A}_{\{i/1\}}}=\frac{TO{{A}_{i}}}{TO{{A}_{1}}}
+\end{equation}
+where ${TO{{A}_{i}}}$ denotes the TOA measurement at the $i$-th BS.
+
+In order to estimate the MS position, TROA must be transformed into the ratio of measured ranges, i.e.,
+\begin{equation}\label{eq:2.2}
+ \frac{{{r}_{i}}}{{{r}_{1}}}=\frac{TO{{A}_{i}}*c}{TO{{A}_{1}}*c}=TRO{{A}_{\{i/1\}}}
+\end{equation}
+%${{r}_{\{i/1\}}=\frac{{{r}_{i}}}{{{r}_{1}}}}$
+where ${{{r}_{i}}}$ denotes the ranging between the $i$-th BS and the MS. In addition, $c$ represents the light velocity. For simplicity, let ${r_{\{ i/1\} }} \buildrel \Delta \over = \frac{{{r_i}}}{{{r_1}}}$ and assume no error in the measurement, then
+\begin{equation}\label{eq:2.3}
+{r}_{\{i/1\}}=\frac{\sqrt{{{(x-{{x}_{i}})}^{2}}+{{(y-{{y}_{i}})}^{2}}}}{\sqrt{{{(x-{{x}_{1}})}^{2}}+{{(y-{{y}_{1}})}^{2}}}}
+\end{equation}
+where ${(x,y)}$ and ${({{x}_{i}},{{y}_{i}})}$ denote the coordinates of the MS and the $i$-th BS respectively. Let the coordinates of BS${_{1}}$ be (0,0) for simplicity, then \eqref{eq:2.3} can be expressed as
+\begin{equation}\label{eq:2.4}
+{{\left({r}_{\{i/1\}}\right)}^{2}}-1={{K}_{i}}\frac{1}{R}-2({{x}_{i}}x+{{y}_{i}}y)\frac{1}{R}
+\end{equation}
+where ${{{K}_{i}}=x_{i}^{2}+y_{i}^{2},R={{x}^{2}}+{{y}^{2}}}$, then rewrite \eqref{eq:2.4} into
+\begin{equation}\label{eq:2.5}
+\mathbf{y}\!=\!\mathbf{Ax}
+\end{equation}
+with
+\begin{equation}\label{eq:2.511}
+\mathbf{y}\!=\!\left[ \begin{aligned}
+  & \!r_{\{2/1\}}^{2}\!-\!1\! \\
+ & \begin{matrix}
+   \begin{aligned}
+  & \begin{matrix}
+   {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots  \\
+ & \!r_{\{N/1\}}^{2}\!-\!1\! \\
+\end{aligned}  \\
+\end{matrix} \\
+\end{aligned} \right],\mathbf{A}=\left[ \begin{aligned}
+  & {{K}_{2}}\begin{matrix}
+   {}  \\
+\end{matrix}\!-\!{{x}_{2}}\begin{matrix}
+   {}  \\
+\end{matrix}\!-\!{{y}_{2}} \\
+ & \vdots \begin{matrix}
+   {} & {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots \begin{matrix}
+   {} & {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots  \\
+ & {{K}_{N}}\begin{matrix}
+   {}  \\
+\end{matrix}\!-\!{{x}_{N}}\begin{matrix}
+   {}  \\
+\end{matrix}\!-\!{{y}_{N}} \\
+\end{aligned} \right],\mathbf{x}\!=\!\left[ \begin{aligned}
+  & 1\!/\!R \\
+ & 2x\!/\!R \\
+ & 2y\!/\!R \\
+\end{aligned} \right]
+\end{equation}
+
+Finally, \eqref{eq:2.5} is solved under the LS principle to find the MS position estimation.
+\begin{equation}\label{eq:2.7}
+\mathbf{\hat{x}=(}{{\mathbf{A}}^{\text{T}}}\mathbf{A}{{\mathbf{)}}^{\text{-1}}}{{\mathbf{A}}^{\text{T}}}\mathbf{y}
+\end{equation}
+where ${{{(\bullet )}^{T}}}$ and ${{{(\bullet )}^{-1}}}$ represent the matrix transpose and the matrix inversion respectively. According to \eqref{eq:2.5}-\eqref{eq:2.7}, the position of MS can be obtained as follows.
+\begin{equation}\label{eq:2.8}
+{{[x,y]}^{T}}=\frac{{{[\mathbf{\hat{x}}(2),\mathbf{\hat{x}}(3)]}^{T}}}{2\mathbf{\hat{x}}(1)}
+\end{equation}
+where ${\mathbf{\hat{x}}(i)}$ denotes the ${i}$-th element of vector ${\mathbf{\hat{x}}}$.
+
+In practice, the measured distance between ${BS}_{i}$ and MS can be expressed by
+\begin{equation}\label{eq:2.9}
+    {r_i} = r_i^0 + {e_i} + {z_i}
+     \end{equation}
+where ${e_i}$ and ${z_i}$ represent the NLOS error and the ranging noise. Generally, the ranging noise is modelled as a zero mean Gaussian noise.
+
+As mentioned in section \uppercase\expandafter{\romannumeral1}, the NLOS error is hard to be tightly adressed by a statistical distribution. Thus, we will present an analytical analyzing method in next section, which does not require the statistical distribution of NLOS error.
+
+\section{Performance Analysis for Positioning Error}
+\subsection{Error propagation mathematical model}
+
+When the range measurements are only corrupted by NLOS errors, their ratio can be expressed as
+\begin{equation}\label{eq:2.10}
+\widetilde{{r}}_{\{i/1\}}=\frac{r_{i}^{0}+\Delta{_{i}}}{r_{1}^{0}+\Delta {_{1}}}
+\end{equation}
+where $r_{i}^{0}$ and $\Delta{_{i}}$ denote the real distance and distance error. Thus, the difference of TROA between the measured value and the true one is
+\begin{equation}\label{eq:2.11}
+\begin{aligned}
+  &  {{r}_{\{i/1\}}^{\Delta}}=\frac{r_{i}^{0}+\Delta{_{i}}}{r_{1}^{0}+\Delta{_{1}}}-\frac{r_{i}^{0}}{r_{1}^{0}}=\frac{\Delta{_{i}}r_{1}^{0}-\Delta {_{1}}r_{i}^{0}}{({r_{1}^{0}}+\Delta{_{1}})r_{1}^{0}} \\
+ & \text{       }=\frac{r_{i}^{0}}{r_{1}^{0}+\Delta {_{1}}}\left(\frac{\Delta {_{i}}}{r_{i}^{0}}-\frac{\Delta {_{1}}}{r_{1}^{0}}\right) \\
+\end{aligned}
+\end{equation}
+
+From \eqref{eq:2.11}, when ${\frac{\Delta {_{i}}}{{{r}_{i}}}\to \frac{\Delta {_{1}}}{{{r}_{1}}}}$, we have ${{ {{r}_{\{i/1\}}^{\Delta}}\to 0}}$, i.e., if the NLOS error rises linearly with the actual MS--BS distance (linear DDM), the measured range ratio is very close to its true value. Then, the localization accuracy will be trivially affected by the TROA bias. Moreover, our analysis reveal that even if it is not a linear DDM, TROA can still reduce the impact of NLOS errors to some extent.
+
+Since there is no NLOS corruption in the matrix ${\mathbf{A}}$, the localization error is mainly caused by the vector ${\mathbf{y}}$. It is easy to derive ${\mathbf{y}}$ as
+\begin{align}\label{eq:2.12}
+   \mathbf{y} &\!=\!
+   \begin{bmatrix}
+   \left(r_{\{2/1\}}^{0}\right)^2 \!-\! 1 \\
+   \vdots \\
+   \left(r_{\{N/1\}}^{0}\right)^2 \!-\! 1
+   \end{bmatrix}
+   \!+\!
+   \begin{bmatrix}
+   2r_{\{2/1\}}^{\Delta} r_{\{2/1\}}^{0} \!+\! \left(r_{\{2/1\}}^{\Delta}\right)^2 \\
+   \vdots \\
+   2r_{\{N/1\}}^{\Delta} r_{\{N/1\}}^{0} \!+\! \left(r_{\{N/1\}}^{\Delta}\right)^2
+   \end{bmatrix}\notag \\
+   &\triangleq \mathbf{y}^0 + \mathbf{y}_{\Delta} 
+   \triangleq \mathbf{A} \left(\mathbf{x}^0 + \mathbf{x}_{\Delta}\right).
+   \end{align}  
+\unskip where ${\mathbf{x}}^{0}$ and ${\mathbf{y}}^{0}$ represent the error-free ${\mathbf{x}}$ and ${\mathbf{y}}$. In \eqref{eq:2.12}, the noisy vector ${ \mathbf{y}_{\Delta}}$ can be rewritten as a product.
+\begin{equation}\label{eq:2.13}
+ \mathbf{y}_{\Delta}=\left[ \begin{aligned}
+  & 2 {{r}_{\{2/1\}}^{\Delta}}{{r}_{\{2/1\}}}+\left(r_{\{2/1\}}^{\Delta }\right)^{2} \\
+ & \begin{matrix}
+   {} & {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots  \\
+ & 2 {{r}_{\{N/1\}}^{\Delta}}{{r}_{\{N/1\}}}+ \left(r_{\{N/1\}}^{\Delta}\right)^{2} \\
+\end{aligned} \right]=\mathbf{PQ}
+\end{equation}
+with \begin{equation}\label{eq:2.131}
+\begin{aligned}
+  & \mathbf{P}\!=\!diag\left\{  {{r}_{\{2/1\}}^{\Delta}}, {{r}_{\{3/1\}}^{\Delta}},..., {{r}_{\{N/1\}}^{\Delta}} \right\} \\
+ & \mathbf{Q}\!=\!{{\left[2{{r}_{\{2/1\}}}\!+\!{{r}_{\{2/1\}}^{\Delta}},...,2{{r}_{\{N/1\}}}\!+\!{{r}_{\{N/1\}}^{\Delta}} \right]}^{T}} \\
+\end{aligned}
+\end{equation}
+
+Thereby, the localization bias is expressed as
+\begin{equation}\label{eq:2.14}
+ \mathbf{x}_{\Delta}={{\left({{\mathbf{A}}^{T}}\mathbf{A}\right)}^{-1}}{{\mathbf{A}}^{T}}\mathbf{y}_{\Delta }={{\left({{\mathbf{A}}^{T}}\mathbf{A}\right)}^{-1}}{{\mathbf{A}}^{T}}\mathbf{PQ}
+\end{equation}
+
+According to \eqref{eq:2.14}, the element of ${\mathbf{P}}$ approaches to 0 when ${\frac{\Delta {_{i}}}{{{r}_{i}}}\to \frac{\Delta {_{1}}}{{{r}_{1}}}}$, resulting in smaller ${ \mathbf{x}_{\Delta}}$. Specially, when ${\frac{\Delta {_{i}}}{{{r}_{i}}}\text{=}\frac{\Delta {_{1}}}{{{r}_{1}}}}$, ${ \mathbf{x}_{\Delta}}$ equals to 0, which indicates that the proposed TROA localization algorithm can reduce the NLOS error thoroughly in the linear DDM.
+\subsection{Average and bound of positioning error}
+Based on the deviation vector ${ \mathbf{x}_{\Delta}}$, this subsection analyzes the relative error between the deviation vector ${ \mathbf{x}_{\Delta}}$ and the true position vector ${ \mathbf{x}^{0}}$, expressed as $ \frac{{\|\mathbf{x}_{\Delta}\|}}{{\|\mathbf{x}^{0}\|}}$.  Further, we will calculate the bounds and average values of this relative error.
+
+In order to simplify the description, the instantaneous value of relative error is defined as ${ERR}_{rela}$, its bounds are defined as ${ERR}_{uplim}$ (upper bound) as well as ${ERR}_{downlim}$ (lower bound), and its average value is defined as ${ERR}_{aver}$. Through these metrics, this paper aims to comprehensively evaluate the specific impact of NLOS errors on the performance of TROA positioning algorithms.
+
+The instantaneous value ${ERR_{rela}}$ can be expressed as
+\begin{equation}\label{eq:2.15}
+{ERR}_{rela} = \frac{\left\|{\mathbf{x}_{\Delta}}\right\|}{\left\|{\mathbf{x}^{0}}\right\|}
+ =\frac{\left\|{{{\left({{\mathbf{A}}^{T}}\mathbf{A}\right)}^{-1}}{{\mathbf{A}}^{T}}\mathbf{y}_{\Delta }}\right\|}{\left\|{{{\left({{\mathbf{A}}^{T}}\mathbf{A}\right)}^{-1}}{{\mathbf{A}}^{T}}\mathbf{y}^{0}}\right\|}
+\end{equation}
+where ${\|{\bullet}\|}$ denotes the norm operation. From \eqref{eq:2.15}, we can further derive the bounds. Since ${\mathbf{A}}$ does not contain interference terms, the terms associated with ${\mathbf{A}}$ are denoted as ${\mathbf{\mathcal{A}}}$, i.e., $\left(\mathbf{A}^{T}\mathbf{A}\right)^{-1}\mathbf{A}^{T} \triangleq {\mathbf{\mathcal{A}}}$. Then, we have
+% 在公式\eqref{eq:2.17}所示的偏离程度瞬时值基础上，结合范数相关知识，可以进一步推导$ \frac{\|{\mathbf{x}_{\Delta}}\|}{\|{\mathbf{x}^{0}}\|}$的极限取值${ERR}_{uplim}$(上界)和${ERR}_{downlim}$ （下界）。因为矩阵${ \mathbf{A}}$不包含干扰项，定位误差仅与矩阵${ \mathbf{y}}$ 有关。所以考虑将所有与矩阵${ \mathbf{A}}$ 有关的部分记为矩阵${\mathbf{\mathcal{A}}}$，利用矩阵范数性质可知:
+\begin{equation}\label{eq:2.16}
+\left\| \left( \mathbf{A}^T \mathbf{A} \right)^{-1} \mathbf{A}^T \mathbf{y}_{\Delta } \right\| \triangleq \left\| \mathbf{\mathcal{A}}\mathbf{y}_{\Delta } \right\| \leq \left\| \mathbf{\mathcal{A}}\right\| \left\|\mathbf{y}_{\Delta } \right\|
+\end{equation}
+\begin{equation}\label{eq:2.17}
+\left\| \left( \mathbf{A}^T \mathbf{A} \right)^{-1} \mathbf{A}^T \mathbf{y}^{0} \right\| \triangleq \left\| \mathbf{\mathcal{A}}\mathbf{y}^{0} \right\| \leq \left\| \mathbf{\mathcal{A}}\right\| \left\|\mathbf{y}^{0} \right\|
+\end{equation}
+
+By introducing the formulation from \eqref{eq:2.16} into \eqref{eq:2.15}, we obtain
+%将\eqref{eq:2.19}带入式\eqref{eq:2.17}中，可以得到
+\begin{equation}\label{eq:2.18}
+{ERR}_{rela} = \frac{\left\| \mathbf{x}_{\Delta} \right\|}{\left\| \mathbf{x}^0 \right\|} = \frac{\left\| \mathbf{\mathcal{A}}\mathbf{y}_{\Delta} \right\|}{\left\| \mathbf{\mathcal{A}}\mathbf{y}^0 \right\|} \leq \frac{\left\|\mathbf{\mathcal{A}}\right\| \left\| \mathbf{y}_{\Delta} \right\|}{\left\| \mathbf{\mathcal{A}}\mathbf{y}^0 \right\|}
+\end{equation}
+
+Similarly, substituting \eqref{eq:2.17} into \eqref{eq:2.15}, we have
+%将\eqref{eq:2.20}带入式\eqref{eq:2.17}中，可以得到
+\begin{equation}\label{eq:2.19}
+{ERR}_{rela} = \frac{\left\| \mathbf{x}_{\Delta} \right\|}{\left\| \mathbf{x}^0 \right\|} = \frac{\left\| \mathbf{\mathcal{A}}\mathbf{y}_{\Delta} \right\|}{\left\| \mathbf{\mathcal{A}}\mathbf{y}^0 \right\|} \geq \frac{\left\| \mathbf{\mathcal{A}}\mathbf{y}_{\Delta}\right\|}{\left\|\mathbf{\mathcal{A}}\right\| \left\| \mathbf{y}^0 \right\|}
+\end{equation}
+
+Since ${\mathbf{y}_{\Delta}}$ contains variables, depending on the NLOS parameters, formulae \eqref{eq:2.18} and \eqref{eq:2.19} can be further deduced according to these parameters, such as our concerned DDM parameters. By changing the parameter values under the DDM model and using the upper limit approximation method, we can further solve the bounds of the relative error.
+\begin{equation}\label{eq:2.20}
+{ERR}_{uplim} = \frac{\left\|\mathbf{\mathcal{A}}\right\| \left\| (\mathbf{y}_{\Delta})_{uplim} \right\|}{\left\| \mathbf{\mathcal{A}} \mathbf{y}^0 \right\|}
+\end{equation}
+\begin{equation}\label{eq:2.21}
+{ERR}_{downlim} =  \frac{\left\| \mathbf{\mathcal{A}}(\mathbf{y}_{\Delta})_{downlim}\right\|}{\left\|\mathbf{\mathcal{A}}\right\| \left\| \mathbf{y}^0 \right\|}
+\end{equation}
+
+In Eq. \eqref{eq:2.20} and \eqref{eq:2.21}, $\left(\mathbf{y}_{\Delta}\right)_{uplim}$ and $\left(\mathbf{y}_{\Delta}\right)_{downlim}$ denote cases where all elements of $\mathbf{y}_{\Delta}$ take their maximum values and minimum values respectively.
+
+Define the average value of relative error as follows
+%定义相对误差平均偏离度为
+\begin{equation}\label{eq:2.22}
+   ERR_{aver}=\frac{\left\|\mathbf{\mathcal{A}}\right\|\left\|\left(\mathbf{y}_{\Delta}\right)_{aver}\right\|}{\left\|\mathbf{\mathcal{A}}\mathbf{y}^0\right\|}
+\end{equation}
+
+When calculating above $ERR_{aver}$, the method is similar to calculations of bounds. The key lies in determining $\mathbf{y}_{\Delta}$. As previously mentioned, the specific expression of $\mathbf{y}_{\Delta}$ is closely related to the parameter setting of DDM model. In this study, we use the median values of model parameters to estimate the average state of $\mathbf{y}_{\Delta}$, denoted as $\left(\mathbf{y}_{\Delta}\right)_{aver}$.
+\subsection{RMSE prediction based on the relative error}
+
+Subsection \uppercase\expandafter{\romannumeral2}${\cdot}$B focuses on the derivation of bounds and average value of the relative error. This subsection will further  expand studies on the relative error. Specifically, by using the average deviation of the relative error $ERR_{aver}$, we derive the corresponding RMSE expression. First, we have
+\begin{equation}\label{eq:2.23}
+   \mathbf{x}^0=\begin{bmatrix}x^0\left(1\right)&x^0\left(2\right)&x^0\left(3\right)\end{bmatrix}^T
+\end{equation}
+\begin{equation}\label{eq:2.24}
+   \mathbf{x}_{\Delta}=\begin{bmatrix}x_{\Delta}\left(1\right)&x_{\Delta}\left(2\right)&x_{\Delta}\left(3\right)\end{bmatrix}^T
+\end{equation}
+
+ Consequently, the relative error $\frac{\left\|{\mathbf{x}_{\Delta}}\right\|}{\left\|{\mathbf{x}^{0}}\right\|}$ can be rewritten as
+\begin{equation}\label{eq:2.25}
+   \frac{\left\|\mathbf{x}_\Delta\right\|}{\left\|\mathbf{x}^0\right\|}=\frac{\sqrt{\left(x_{\Delta}\left(1\right)\right)^2+\left(x_{\Delta}\left(2\right)\right)^2+\left(x_{\Delta}\left(3\right)\right)^2}}{\sqrt{\left(x^0\left(1\right)\right)^2+\left(x^0\left(2\right)\right)^2+\left(x^0\left(3\right)\right)^2}}
+\end{equation}
+
+Simultaneous squaring of both sides of \eqref{eq:2.25} yields
+\begin{equation}\label{eq:2.26}
+   \begin{aligned}
+      & \left(x_{\Delta}\left(1\right)\right)^2+\left(x_{\Delta}\left(2\right)\right)^2+\left(x_{\Delta}\left(3\right)\right)^2 \\
+      &= \left(\frac{\left\|\mathbf{x}_{\Delta}\right\|}{\left\|\mathbf{x}^0\right\|}\right)^2\left[\left(x^0\left(1\right)\right)^2+\left(x^0\left(2\right)\right)^2+\left(x^0\left(3\right)\right)^2\right]    
+   \end{aligned}
+\end{equation}
+
+Defining $\mathbf{\hat{x}}=\mathbf{x}^0+\mathbf{x}_{\Delta}$, we have 
+    \begin{equation}\label{eq:2.27} 
+    \mathbf{\hat{x}}\!=\!\begin{bmatrix}x^0\left(1\right)\!+\!x_{\Delta}\left(1\right),x^0\left(2\right)\!+\!x_{\Delta}\left(2\right),x^0\left(3\right)\!+\!x_{\Delta}\left(3\right)\end{bmatrix}^T 
+\end{equation}
+\indent According to \eqref{eq:2.27} and \eqref{eq:2.8}, formula \eqref{eq:2.26} can be reformulated as
+\begin{equation}\label{eq:2.28}
+   \begin{aligned}
+    {\widetilde{x}}^2+{\widetilde{y}}^2 
+   &=-\frac14+\frac{1+\left(\left\|\mathbf{x}_\Delta\right\|/\left\|\mathbf{x}^0\right\|\right)^2}{4\left(\hat{x}\left(1\right)\right)^2}\sum_{i=1}^3\left({x}^0\left(i\right)\right)^2 \\
+   & +\frac{\sum_{i=1}^3x^0\left(i\right)\cdot x_{\Delta}\left(i\right)}{2\left(\hat{x}\left(1\right)\right)^2}
+   \end{aligned}
+\end{equation}
+\unskip{where $({\widetilde{x}},{\widetilde{y}})$ denotes the estimated MS position. Additionally, it can also be derived from \eqref{eq:2.26} that}
+\begin{equation}\label{eq:2.29}
+   \left(x_0\right)^2+\left(y_0\right)^2=-\frac14+\frac{\sum_{i=1}^3\left(x_{\Delta}\left(i\right)\right)^2}{4\left(x^0\left(1\right)\right)^2\left(\left\|\mathbf{x}_{\Delta}\right\|/\left\|\mathbf{x}^0\right\|\right)^2}
+\end{equation}
+where $(x_0,y_0)$ denotes the true MS position.
+
+Finally, by combining \eqref{eq:2.28} and \eqref{eq:2.29}, we have
+%通过\eqref{eq:2.86}和\eqref{eq:2.87}，可以得到
+\begin{equation}\label{eq:2.30}
+   \begin{small}
+   \begin{aligned}
+      \hspace{-7mm}
+      & F\left(x_0,y_0\right)\!\triangleq\!\left(\widetilde{x}\!-\!x_0\right)^2\!+\!\left(\widetilde{y}\!-\!y_0\right)^2 \\
+      & \!=\! \!-\!\frac12\!-\!2\hat{x}x_0\!-\!2\hat{y}y_0\!+\!\frac{\sum_{i\!=\!1}^3\left(x_{\Delta}\left(i\right)\right)^2}{4\left(x^0\left(1\right)\right)^2\left(\left\|\mathbf{x}_\Delta\right\|/\left\|\mathbf{x}^0\right\|\right)^2}\\
+      &\!+\!\frac{\sum_{i\!=\!1}^3 x^0\left(i\right)\cdot x_\Delta\left(i\right)}{2\left(\hat{x}\left(1\right)\right)^2}\!+\!\frac{1\!+\!\left(\left\|\mathbf{x}_\Delta\right\|/\left\|\mathbf{x}^0\right\|\right)^2}{4\left(\hat{x}\left(1\right)\right)^2}\sum_{i\!=\!1}^3\left(x^0\left(i\right)\right)^2
+   \end{aligned}
+\end{small}
+  \end{equation}
+where $F\left(x_0,y_0\right)$ relates to the positioning error. Then, taking the average of all quantities in \eqref{eq:2.30}, i.e. $\mathbf{x}_{\Delta}$ is replaced by $\left(\mathbf{x}_{\Delta}\right)_{aver}$ and  $\frac{\left\|{\mathbf{x}_{\Delta}}\right\|}{\left\|{\mathbf{x}^0}\right\|}$ is replaced by its average deviation ${ERR}_{aver}$, we approximately obtain the positioning RMSE. Note $\hat{\mathbf{x}}_{aver}=\mathbf{x}^0+\left(\mathbf{x}_{\Delta}\right)_{aver}$.
+
+Since the MS is randomly generated, the average position is very close to 0. Then, the averaged values of last two terms in $\mathbf{x}^0$ have little effects on the final result, because they depend on the average MS position coordinates. Therefore, we ignore the less influential parts and keep only the main part of \eqref{eq:2.30}. Consequently, the approximation of RMSE can be further simplified as
+   \begin{equation}\label{eq:31}
+      \begin{small}
+      \begin{aligned}
+      & RMSE^2 \!=\! E\left[F\left(x_0,y_0\right)\right]\!\approx\! \frac{\left( 1\!+\! {{ERR}_{aver}}^2\right) \left(\overline {x^0\left(1\right)}\right)^2}{4\left(\overline{\hat{x}_{aver}\left(1\right)}\right)^2}\\
+     & \!+\!\frac{\left(2\overline{\hat{x}_{aver}\left(1\right)}\cdot\overline{x^0\left(1\right)}\!+\!\frac1{ERR_{aver}^2}\right)\sum_{i=1}^3\overline{\left(x_\Delta\right)_{aver}\left(i\right)}}{4\left(\overline{\hat{x}_{aver}\left(1\right)}\right)^2}
+   \end{aligned}
+\end{small}
+   \end{equation}
+where $E\left[{\bullet}\right]$ stands for expectation operations. Moreover, $\overline {x^0\left(1\right)} $ denotes that the element $x^0\left(1\right)$ in $\mathbf{x}^0$ takes its mean value. Likewise, $\overline {\hat{x}_{aver}\left(1\right)}$ represents the element $\hat{x}_{aver}\left(1\right)$ in vector $\hat{\mathbf{x}}_{aver}$ takes its average value.
+\section{Positioning Error Evaluation for DDM Models}
+\subsection{NLOS DDM-1}
+
+In DDM-1, ${e_i}$ of \eqref{eq:2.9} depends on the coefficient $k$.
+\begin{equation}\label{eq:2.32}
+{{e}_{i}}={{r}_{i}^{0}}*k
+\end{equation}
+
+Then, $r_{i} $ and ${\Delta}_{i}$ under the DDM-1 model can be rewritten as
+%基于此，DDM-1模型下的测量距离$r_{i} $与误差${\Delta}_{i}$可以改写为
+\begin{equation}\label{eq:2.33}
+{r_i} = r_i^0 + {e_i} + {z_i} = \left(1+k\right)*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+ \begin{equation}\label{eq:2.341}
+{{\Delta}_i} = {e_i} + {z_i} = k*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+
+By substituting \eqref{eq:2.33} and \eqref{eq:2.341} into the formula for ${{r}_{\{i/1\}}^{\Delta}}$, we obtain
+ %将\eqref{eq:2.26}、\eqref{eq:2.27}带入${{r}_{\{i/1\}}^{\Delta}}$ 表达式中，可以得到
+ \begin{equation}\label{eq:2.351} 
+   {{r}_{\{i/1\}}^{\Delta}} = 
+ {\frac{1}{1+k}}{\frac{r_{i}^{0}}{r_{1}^{0}}}\left(\frac{z {_{i}}}{r_{i}^{0}}-\frac{z{_{1}}}{r_{1}^{0}} \right) \rightarrow 0
+\end{equation}
+where $i = 2, \ldots, N$. Thus, $\mathbf{y}_{\Delta}$ is approximately a zero vector, leading to $\mathbf{x}_{\Delta}$ being nearly a zero vector. If $\mathbf{x}_{\Delta} \rightarrow 0$, the relative error ${\frac{\left\|\mathbf{x}_{\Delta}\right\|}{\left\|\mathbf{x}^{0}\right\|}}$ converges to 0 at the same time, i.e., the localization under NLOS DDM-1 model is approximately transformed to its LOS positioning results.
+\subsection{NLOS DDM-2}
+
+In this model, a disturbance variable ${\beta}$ is added, and the NLOS error is given by
+\begin{equation}\label{eq:2.34}
+{{e}_{i}}=\left(1-\beta +\beta *rand\right)*\alpha *{{r}_{i}^{0}},{\alpha ,\beta \in \left[ 0,1 \right]}
+\end{equation}
+where ${\alpha }$ is the ratio between the NLOS error with the true distance, and ${\beta }$ is the jitter ratio of ${\alpha }$. Obviously, a smaller ${\beta }$ leads to higher accuracy of the localization algorithm, since smaller ${\beta}$ makes DDM-2 degrade to DDM-1.
+
+Let $ {\left(1-\beta +\beta *rand\right)*\alpha = {t_i}} $, then the corresponding NLOS error $e_i$ can be rewritten as $ {{e_i} = {t_i}*{r_{i}^{0}}} $. Therefore,  $r_{i} $ and ${\Delta}_{i}$ under the DDM-2 model can be reformed as follows.
+\begin{equation}\label{eq:2.35}
+{r_i} = r_i^0 + {e_i} + {z_i} = \left(1+{t_i}\right)*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+ \begin{equation}\label{eq:2.36}
+{{\Delta}_i} = {e_i} + {z_i} = {t_i}*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+
+Meanwhile, $ {{r}_{\{i/1\}}^{\Delta}} $ corresponds to
+ %与此同时，$ {{r}_{\{i/1\}}^{\Delta}} $ 对应有
+\begin{equation}\label{eq:2.37}
+\begin{aligned}
+{{r}_{\{i/1\}}^{\Delta}} &= \frac{r_{i}^{0}}{r_{1}^{0}+\Delta {_{1}}} \left(\frac{\Delta {_{i}}}{r_{i}^{0}}-\frac{\Delta {_{1}}}{r_{1}^{0}}\right)\\
+&={\frac{1}{1+{t_i}}}{\frac{r_{i}^{0}}{r_{1}^{0}}}\left({t_i}+{\frac{z {_{i}}}{r_{i}^{0}}}-{t_1}-{\frac{z{_{1}}}{r_{1}^{0}}} \right)
+\end{aligned}
+\end{equation}
+
+In \eqref{eq:2.37}, since our study focus on the critical NLOS scenario, where the NLOS error is the dominated error for TOA measurements, ${z}_{i}$ can be neglected, and we have
+\begin{equation}\label{eq:2.38}
+{{r}_{\{i/1\}}^{\Delta}} = \frac{{t_i}-{t_1}}{1+{t_1}} * \frac{{r_{i}^{0}}}{{r_{1}^{0}}}
+= \frac{{t_i}-{t_1}}{1+{t_1}}{{r}_{\{i/1\}}^{0}}
+\end{equation}
+
+Bringing \eqref{eq:2.38} into $\mathbf{y}_{\Delta}$, we obtain
+%将 DDM-2 对应的$ {{r}_{\{i/1\}}^{\Delta}} $ 表达式\eqref{eq:2.33}，带入到矩阵$\mathbf{y}_{\Delta}$ 表达式中，可以得到
+\begin{small}
+\begin{equation}\label{eq:2.381}
+\mathbf{y}_{\Delta}\!=\!\left[ \begin{aligned}
+  &2\frac{{\left({t_2}\!-\!{t_1}\right)\left({1\!+\!{t_2}}\right)}}{{\left(1\!+\!{t_1}\right)}^2}\left({{r}_{\{2/1\}}^{0}}\right)^2
+ \!+\!\left({\frac{{t_2}\!-\!{t_1}}{1\!+\!{t_1}}{{r}_{\{2/1\}}^{0}}}\right)^2\\
+ & \begin{matrix}
+   {} & {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots  \\
+ &2\frac{{\left({t_N}\!-\!{t_1}\right)\left({1\!+\!{t_N}}\right)}}{{\left(1\!+\!{t_1}\right)}^2}\left({{r}_{\{N/1\}}^{0}}\right)^2
+  \!+\!\left({\frac{{t_N}\!-\!{t_1}}{1\!+\!{t_1}}{{r}_{\{N/1\}}^{0}}}\right)^2 \\
+\end{aligned} \right]
+\end{equation}
+\end{small}
+\subsubsection{Bounds for the NLOS DDM-2}
+\
+
+As mentioned before, we can obtain the maximum value ${t_{\max}}$ and the minimum value ${t_{\min}}$ for the variable by changing the values of $\alpha$ and $\beta$.
+%如前文所述，当改变$\alpha$, $\beta$取值时，可以得到变量${t_i} $的最大值 ${t_{max}}$ 和最小值 $t_{min}$, 即：${t_{max}=\alpha}$, ${t_{min}}=(1-{\beta})*{\alpha}$。
+\begin{equation}\label{eq:2.40}
+   {t_{\max}}=\alpha
+\end{equation}
+\begin{equation}\label{eq:2.41}
+   {t_{\min}}=\left(1-{\beta}\right)*{\alpha}
+\end{equation}
+
+For elements in $\mathbf{y}_{\Delta}$, the variable parts are ${ \frac{{\left({t_i}-{t_1}\right)\left({1+{t_i}}\right)}}{{\left(1+{t_1}\right)}^2}}$ and $\left({\frac{{t_i}-{t_1}}{1+{t_1}}}\right)^2$. For the variable part  ${ \frac{{\left({t_i}-{t_1}\right)\left({1+{t_i}}\right)}}{{\left(1+{t_1}\right)}^2}}, i = 2,...,N$, it reaches its maximum value when $\left\{{t_i}\rightarrow{t_{\max}}, {t_1}\rightarrow{t_{\min}}\right\}$.
+\begin{equation}\label{eq:2.42}
+\left[\frac{\left(t_i-t_1\right)\left(1+t_i\right)}{\left(1+t_1\right)^2}\right]_{\max}={\frac{{\left({t_{\max}}-{t_{\min}}\right)\left({1+{t_{\max}}}\right)}}{\left(1+{t_{\min}}\right)^2}}
+\end{equation}
+
+In contrast, it reaches the minimum value when $\left\{{t_i}\rightarrow{t_{\min}}, {t_1}\rightarrow{t_{\max}}\right\}$.
+\begin{equation}\label{eq:2.43}
+   \left[\frac{\left(t_i-t_1\right)\left(1+t_i\right)}{\left(1+t_1\right)^2}\right]_{\min}= {\frac{{\left({t_{\min}}-{t_{\max}}\right)\left({1+{t_{\min}}}\right)}}{\left(1+{t_{\max}}\right)^2}} 
+\end{equation}
+
+On the other hand, the value variation of $\left({\frac{{t_i}-{t_1}}{1+{t_1}}}\right)^2,i=2, ... ,N $ is discussed as follows.
+
+In the case where ${t_i}>{t_1}$, the variable $\left({\frac{{t_i}-{t_1}}{1+{t_1}}}\right)^2$ can reach the maximum value when $\left\{{t_i}\rightarrow{t_{\max}}, {t_1}\rightarrow{t_{\min}}\right\}$. Conversely, it can reach the minimum value when $\left\{{t_i}\rightarrow{t_{\min}}, {t_1}\rightarrow{t_{\max}}\right\}$.
+\begin{equation}\label{eq:2.44}
+   \left[\left(\frac{t_i-t_1}{1+t_1}\right)^2\right]_{\max} = {\left({\frac{{t_{\max}}-{t_{\min}}}{1+{t_{\min}}}}\right)^2}
+\end{equation}
+\begin{equation}\label{eq:2.45}
+   \left[\left(\frac{t_i-t_1}{1+t_1}\right)^2\right]_{\min} = {\left({\frac{{t_{\min}}-{t_{\max}}}{1+{t_{\max}}}}\right)^2}
+\end{equation}
+
+In the case where ${t_i} \leq {t_1}$, the maximum and minimum values for $\left({\frac{{t_i}-{t_1}}{1+{t_1}}}\right)^2$ correspond to $\left\{{t_i}\rightarrow{t_{\min}}, {t_1}\rightarrow{t_{\max}}\right\}$ and $\left\{{t_i}\rightarrow{t_{\max}}, {t_1}\rightarrow{t_{\min}}\right\}$, respectively.
+\begin{equation}\label{eq:2.46}
+   \left[\left(\frac{t_i-t_1}{1+t_1}\right)^2\right]_{\max} = {\left({\frac{{t_{\min}}-{t_{\max}}}{1+{t_{\max}}}}\right)^2}
+\end{equation}
+\begin{equation}\label{eq:2.47}
+   \left[\left(\frac{t_i-t_1}{1+t_1}\right)^2\right]_{\min} = {\left({\frac{{t_{\max}}-{t_{\min}}}{1+{t_{\min}}}}\right)^2}
+\end{equation}
+
+According to \eqref{eq:2.42}-\eqref{eq:2.47}, the elements in $\mathbf{y}_{\Delta}$ can take on maximum and minimum values. When all elements in $\mathbf{y}_{\Delta}$ take their maximum values, we obtain $\left(\mathbf{y}_{\Delta}\right)_{uplim}$. Similarly, when all elements in $\mathbf{y}_{\Delta}$ take their minimum values, we obtain $\left(\mathbf{y}_{\Delta}\right)_{downlim}$. Then we have the error analysis path, i.e., DDM parameters$ \stackrel{\eqref{eq:2.42}\sim \eqref{eq:2.47}}{\longrightarrow} \left(\mathbf{y}_{\Delta}\right)_{uplim}, \left(\mathbf{y}_{\Delta}\right)_{downlim}$ $\stackrel{\eqref{eq:2.20}\sim \eqref{eq:2.21}}{\longrightarrow} {ERR}_{uplim}, {ERR}_{downlim}$.
+
+\subsubsection{{Average error for the NLOS DDM-2}}
+\
+
+First, we define the median value of $t_i$ as
+\begin{equation}\label{eq:2.48}
+   \setlength{\abovedisplayskip}{3pt}
+   {t_{1/2}} \triangleq {t_{\min}}+ \frac{1}{2}\left({t_{\max}}-{t_{\min}}\right)
+   \setlength{\belowdisplayskip}{3pt}
+   \end{equation}
+
+Then, by replacing the variable ${t_{\max}}$ with the median ${t_{1/2}}$, we transform the element $2{\frac{{\left({t_{i}}-{t_{1}}\right)\left({1+{t_{i}}}\right)}}{\left(1+{t_{1}}\right)^2}}\left({r_{i}^{0}}\right)^2+\left({\frac{{t_{i}}-{t_{1}}}{1+{t_{1}}}}{r_{i}^{0}}\right)^2$ in the vector $\mathbf{y}_{\Delta}$ into the following form.
+ \begin{equation}\label{eq:2.49}
+\begin{cases}
+{2{\frac{{\left({t_{1/2}}\!-\!{t_{\min}}\right)\left({1\!+\!{t_{1/2}}}\right)}}{\left(1\!+\!{t_{\min}}\right)^2}}\left({r_{i}^{0}}\right)^2\!+\!\left({\frac{{t_{1/2}}\!-\!{t_{\min}}}{1\!+\!{t_{\min}}}}{r_{i}^{0}}\right)^2} & {{t_i}\!>\!{t_1}} \\
+{2{\frac{{\left({t_{1/2}}\!-\!{t_{\min}}\right)\left({1\!+\!{t_{1/2}}}\right)}}{\left(1\!+\!{t_{\min}}\right)^2}}\left({r_{i}^{0}}\right)^2+\left({\frac{{t_{\min}}\!-\!{t_{1/2}}}{1\!+\!{t_{1/2}}}}{r_{i}^{0}}\right)^2} & {{t_i}\!\leq\!{t_1}}
+\end{cases}
+\end{equation}
+
+From \eqref{eq:2.49}, the mean relative error ${ERR}_{aver}$ can be obtained through \eqref{eq:2.22}.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm2_change_alpha_aver.eps}
+        \caption*{(a)\quad Average error versus $\alpha$: $\beta = 0.2$}
+    \end{minipage}
+    \vspace{0.5cm} % 调整两张图之间的垂直距离
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm2_change_beta_aver.eps}
+        \caption*{(b)\quad Average error versus $\beta$: $\alpha = 0.3$}
+    \end{minipage}
+    \vspace{-0.5cm}
+    \caption{Relative error for the NLOS DDM-2.}
+    \label{fig:Fig2}
+\end{figure}
+
+Fig. \ref{fig:Fig2} represents the relative error of localization for the NLOS DDM-2 model. The solid line represents the instantaneous relative error ${ERR}_{rela}$ calculated by \eqref{eq:2.15} and averaged over 1000 simulations. In particular, The lower bound shows trivial variations under different values of ${\alpha}$ and ${\beta}$. However, the upper bound significantly increases with the increase of parameters $\left\{{\alpha}, {\beta}\right\}$. Moreover, $ERR_{uplim}$ values in [0.1, 0.6] when ${\alpha}$ is changed. In contrast, when ${\beta}$ changes, it values in [0.1, 1.0). Regarding $ERR_{aver}$, its range is (0, 0.2] when ${\alpha}$ changes, whereas its value range is (0, 0.4] when ${\beta}$ changes. In brief, all curves in this figure show a consistent trend. In addition, a comprehensive comparison of subplot (a) and subplot (b) reveals that a change in the variable ${\beta}$ has a greater impact than a change in ${\alpha}$. This dues to that a change in $\beta$ increases the nonlinearity between ${e_i}$ and ${r_{i}^{0}}$ more than a change in $\alpha$.
+\subsection{NLOS DDM-3}
+
+In NLOS DDM-3, the NLOS error $e_i$ and the true distance ${r_{i}^{0}}$ must satisfy the relationship ${{e_i} = {k_i}{r_{i}^{0}}}$, where ${k_i} \sim U({k_{\min}},{k_{\max}})$. The upper and lower bounds of uniform distribution are ${k_{\min}}$, ${k_{\max}}$. Then, $r_i$ and ${\Delta}_i$ are rewritten as
+\begin{equation}\label{eq:2.50}
+{r_i} = r_i^0 + {e_i} + {z_i} = \left(1+{k_i}\right)*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+ \begin{equation}\label{eq:2.51}
+{{\Delta}_i} = {e_i} + {z_i} = {k_i}*{{r}_{i}^{0}}+{z_i}
+ \end{equation}
+
+Analogous to DDM-2, $z_i$ is neglected, we obtain
+\begin{equation}\label{eq:2.52}
+{{r}_{\{i/1\}}^{\Delta}} = \frac{{k_i}-{k_1}}{1+{k_1}} * \frac{{r_{i}^{0}}}{{r_{1}^{0}}}
+= \frac{{k_i}-{k_1}}{1+{k_1}}{{r}_{\{i/1\}}^{0}}
+\end{equation}
+
+Bringing \eqref{eq:2.52} into $\mathbf{y}_{\Delta}$, we have
+%将 DDM-3 对应的$ {{r}_{\{i/1\}}^{\Delta}}$ 带入到矩阵$\mathbf{y}_{\Delta}$ 表达式中，可以得到
+\begin{small}
+\begin{equation}\label{eq:2.521}
+ \mathbf{y}_{\Delta}\!=\!\begin{bmatrix}
+  &2\frac{{\left({k_2}\!-\!{k_1}\right)\left({1\!+\!{k_2}}\right)}}{{\left(1\!+\!{k_1}\right)}^2}\left({{r}_{\{2/1\}}^{0}}\right)^2
+  \!+\!\left({\frac{{k_2}\!-\!{k_1}}{1\!+\!{k_1}}{{r}_{\{2/1\}}^{0}}}\right)^2\\
+ & \begin{matrix}
+   {} & {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\begin{matrix}
+   {}  \\
+\end{matrix}\vdots  \\
+ &2\frac{{\left({k_N}\!-\!{k_1}\right)\left({1\!+\!{k_N}}\right)}}{{\left(1\!+\!{k_1}\right)}^2}\left({{r}_{\{N/1\}}^{0}}\right)^2
+  \!+\!\left({\frac{{k_N}\!-\!{k_1}}{1\!+\!{k_1}}{{r}_{\{N/1\}}^{0}}}\right)^2 \\
+\end{bmatrix}
+\end{equation}
+\end{small}
+\subsubsection{Bounds for the NLOS DDM-3}
+\
+
+
+In NLOS DDM-2 scenario, the relationship between $e_i$ and ${r_{i}^{0}}$ is espressed as $e_i = {t_i}{r_{i}^{0}}$, where $t_i = (1 - \beta + \beta * rand) * \alpha $. Similarly, in NLOS DDM-3, the relationship is expressed as ${e_i} = {k_i}{r_{i}^{0}}$, where ${k_i} \sim U({k_{\min}},{k_{\max}})$. We can contrust the relation between two DDM models. In fact, two models are equivalent, if we have
+\begin{equation}\label{eq:2.53}
+ \alpha = k_{\max}
+\end{equation}
+\begin{equation}\label{eq:2.54}
+   \beta = 1 - \frac{k_{\min}}{k_{\max}}
+  \end{equation}
+
+Let $\alpha$ and $\beta$ in the DDM-2 section take the values shown in \eqref{eq:2.53} and \eqref{eq:2.54} respectively. Then, the average value and bounds for relative error in NLOS DDM-3 can be calculated.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm3_change_kmax_aver.eps}
+        \caption*{(a)\quad Average error versus ${k_{\max}} $: ${k_{\min} = 0.1}$}
+    \end{minipage}
+    \vspace{0.5cm} % 调整两张图之间的垂直距离
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm3_change_kmin_aver.eps}
+        \caption*{(b)\quad Average error versus ${k_{\min}} $: ${k_{\max} = 0.6}$}
+    \end{minipage}
+    \vspace{-0.5cm}
+    \caption{Relative error for the NLOS DDM-3.}
+    \label{fig:Fig4}
+ \end{figure}
+ 
+From Fig. \ref{fig:Fig4}, we explicitly see that the lower bound is insensitive to the variation of both parameters ${k_{\min}}$ and ${k_{\max}}$. Moreover, in the case of fixing ${k_{\min}}$, three remaining error variables increase with increasing ${k_{\max}}$. Conversely, when fixing the value of ${k_{\max}}$, these three variables decrease with increasing ${k_{\min}}$. In fact, the smaller the difference between ${k_{\min}}$ and ${k_{\max}}$, the lower nonlinearity between $e_i$ and ${{r}_{i}^{0}}$, resulting in better performance.
+ \subsection{NLOS DDM-4}
+
+This model further extends the non-linear degree between ${e_i}$ and ${{r}_{i}^{0}}$ by adding a NLOS error term ${n_i}$ into the DDM-3 model, in which ${n_i}$ unformly distributed between ${n_{min}}$ and ${n_{max}}$.
+
+In this scenario, the NLOS error ${e_i}$ is described as ${e_i} = {k_i}{{r}_{i}^{0}}+{n_i}$. Then, $r_i$ and ${\Delta}_i$ can be rewritten as follows.
+ \begin{equation}\label{eq:2.55}
+ {r_i} = r_i^0 + {e_i} + {z_i} = \left(1+{k_i}\right)*{{r}_{i}^{0}}+{n_i}+{z_i}
+  \end{equation}
+  \begin{equation}\label{eq:2.56}
+ {{\Delta}_i} = {e_i} + {z_i} = {k_i}*{{r}_{i}^{0}}+{n_i}+{z_i}
+  \end{equation}
+ \begin{equation}\label{eq:2.57}
+ {{r}_{\{i/1\}}^{\Delta}}
+ = \frac{\left(1+{k_i}\right){{r}_{i}^{0}}+{n_i}-\left(1+{k_1}\right){{r}_{i}^{0}}-{n_1}{\frac{{r_{i}^{0}}}{{r}_{1}^{0}}}}{\left(1+{k_1}\right){{r}_{1}^{0}}+{n_1}}
+ \end{equation}
+ 
+In order to simplify the description, let ${E_i} = \left(1+{k_i}\right){{r}_{i}^{0}} + {n_i}$. Therefore, \eqref{eq:2.57} can be reformulated as
+ \begin{equation}\label{eq:2.58}
+ {{r}_{\{i/1\}}^{\Delta}} = \frac{{E_i}-\left(1+{k_1}-\frac{n_1}{{r}_{1}^{0}}\right){{r}_{i}^{0}}}{E_1}
+ \end{equation}
+
+Bringing \eqref{eq:2.58} into the vector $\mathbf{y}_{\Delta}$, we obtain
+ \begin{small}
+ \begin{equation}\label{eq:2.59}
+   \hspace{-4.5mm}
+   \mathbf{y}_\Delta\!=\!
+   \begin{bmatrix}
+   \left(\frac{E_2}{E_1}\right)^2\!-\!2 \left(1\!-\!2 \frac{n_1}{E_1}\right)\frac{{r}_{2}^{0}}{{r}_{1}^{0}}\frac{E_2}{E_1}\!+\!\left(\frac{{r}_{2}^{0}}{{r}_{1}^{0}}\!-\!\left(\frac{{r}_{2}^{0}}{{r}_{1}^{0}}\!+\!1\right)\frac{n_1}{E_1}\right)\\
+   \vdots \\
+   \left(\frac{E_N}{E_1}\right)^2\!-\!2\left(1\!-\!2\frac{n_1}{E_1}\right)\frac{{r}_{N}^{0}}{{r}_{1}^{0}}\frac{E_N}{E_1}\!+\!\left(\frac{{r}_{N}^{0}}{{r}_{1}^{0}}\!-\!\left(\frac{{r}_{N}^{0}}{{r}_{1}^{0}}\!+\!1\right)\frac{n_1}{E_1}\right)
+   \end{bmatrix}
+   \end{equation}
+\end{small}
+ \subsubsection{Bounds for the NLOS DDM-4}
+\
+
+For the variable part $\left({\frac{E_i}{E_1}}\right)^2$ in \eqref{eq:2.59}, the key is to determine the value range of ${\frac{E_i}{E_1}}$. In order to simplify the description, we define variables $\mathcal{E}_{i_{{k_{\max}},{n_{\max}}}}$, $\mathcal{E}_{i_{{k_{\max}},{n_{\min}}}}$, $\mathcal{E}_{i_{{k_{\min}},{n_{\max}}}}$ and $\mathcal{E}_{i_{{k_{\min}},{n_{\min}}}}$, where $\mathcal{E}_{i_{{k_{\max}},{n_{\max}}}}$ denotes that $\left\{{k_i}, {n_i}\right\}$ in ${E_i}$ are taken to be $\left\{{k_{max}}, {n_{max}}\right\}$. Similarly, the specific meanings of $\mathcal{E}_{i_{{k_{\max}},{n_{\min}}}}$, $\mathcal{E}_{i_{{k_{\min}},{n_{\max}}}}$ and $\mathcal{E}_{i_{{k_{\min}},{n_{\min}}}}$ are available. Observing the following expression
+\begin{equation}\label{eq:2.60}
+\frac{E_i}{E_1} = \frac{(1+{k_i}){{r}_{i}^{0}}+{n_i}}{(1+{k_1}){{r}_{1}^{0}}+{n_1}},i=2,...,N
+\end{equation}
+
+From \eqref{eq:2.60}, it is easy to find that the value of ${\frac{E_i}{E_1}}$ is proportional to values of ${k_i}$ and ${n_i}$, while inversely proportional to the parameters ${k_1}$ and ${n_1}$. Therefore, the minimum value of ${\frac{E_i}{E_1}}$ is $\frac{\mathcal{E}_{i_{{k_{\min}},{n_{\min}}}}}{\mathcal{E}_{1_{{k_{\max}},{n_{\max}}}}}$, and the maximum value of ${\frac{E_i}{E_1}}$ is $\frac{\mathcal{E}_{i_{{k_{\max}},{n_{\max}}}}}{\mathcal{E}_{1_{{k_{\min}},{n_{\min}}}}}$. Consequently, the minimum and maximum values of the variable part $\left({\frac{E_i}{E_1}}\right)^2$ are shown as follows.
+\begin{equation}\label{eq:2.61}
+   \left(\frac{E_i}{E_1}\right)^2_{\min}={\left(\frac{\mathcal{E}_{i_{{k_{min}},{n_{min}}}}}{\mathcal{E}_{1_{{k_{max}},{n_{max}}}}}\right)^2}
+\end{equation}
+\begin{equation}\label{eq:2.62}
+   \left(\frac{E_i}{E_1}\right)^2_{\max}={\left(\frac{\mathcal{E}_{i_{{k_{max}},{n_{max}}}}}{\mathcal{E}_{1_{{k_{min}},{n_{min}}}}}\right)^2}
+\end{equation}
+
+Looking at the variable part $-2 \left(1-2{\frac{n_1}{E_1}}\right){\frac{{{r}_{2}^{0}}}{{{r}_{1}^{0}}}}{\frac{E_2}{E_1}}$ in \eqref{eq:2.59}, we first divide it into two terms, such as
+\begin{equation}\label{eq:2.63}
+-2\left(1-2{\frac{n_1}{E_1}}\right){\frac{{{r}_{i}^{0}}}{{{r}_{1}^{0}}}}{\frac{E_i}{E_1}}
+= -2{\frac{{{r}_{i}^{0}}}{{{r}_{1}^{0}}}}{\frac{E_i}{E_1}} + 4{\frac{n_1}{E_1}}{\frac{E_i}{E_1}}{\frac{{{r}_{i}^{0}}}{{{r}_{1}^{0}}}}
+\end{equation}
+
+In \eqref{eq:2.63}, the first term  $-2{\frac{{{{r}_{i}^{0}}}}{{{r}_{1}^{0}}}}{\frac{E_i}{E_1}}$ takes its value according to ${\frac{E_i}{E_1}}$, while the second term $4{\frac{n_1}{E_1}}{\frac{E_i}{E_1}}{\frac{{{r}_{i}^{0}}}{{{r}_{1}^{0}}}}$ must be analyzed according to ${\frac{n_1}{E_1}}{\frac{E_i}{E_1}}$, i.e.
+\begin{equation}\label{eq:2.64}
+{\frac{n_1}{E_1}}{\frac{E_i}{E_1}} =
+\frac{{n_1}\left(\left(1+{k_i}\right){{r}_{i}^{0}}+{n_i}\right)}{\left(\left(1+{k_1}\right){{r}_{1}^{0}}+{n_1}\right)^2},i=2,...,N
+\end{equation}
+\begin{equation}\label{eq:2.65}
+   \left({\frac{n_1}{E_1}}{\frac{E_i}{E_1}}\right)_{\max} = {\frac{{n_{\min}}\mathcal{E}_{i_{{k_{\max}},{n_{\max}}}}}{\left(\mathcal{E}_{1_{{k_{\min}},{n_{\min}}}}\right)^2}} 
+\end{equation}
+\begin{equation}\label{eq:2.66}
+   \left({\frac{n_1}{E_1}}{\frac{E_i}{E_1}}\right)_{\min} = {\frac{{n_{\max}}\mathcal{E}_{i_{{k_{\min}},{n_{\min}}}}}{\left(\mathcal{E}_{1_{{k_{\max}},{n_{\max}}}}\right)^2}}
+\end{equation}
+
+Now, there only leaves the final variable part  $\left({\frac{{r}_{i}^{0}}{{r}_{1}^{0}}}-\left({\frac{{r}_{i}^{0}}{{r}_{1}^{0}}}+1\right){\frac{n_1}{E_1}}\right)^2$ in \eqref{eq:2.59}, where the key is to determine the value range of $\frac{n_1}{E_1}$.
+\begin{equation}\label{eq:2.67}
+\frac{n_1}{E_1} = \frac{n_1}{(1+{k_1}){{r}_{1}^{0}}+{n_1}}
+= \frac{1}{\frac{(1+{k_1}){{r}_{1}^{0}}}{n_1}+1},i=2,...,N
+\end{equation}
+
+Based on \eqref{eq:2.67}, we observe that the value of $\frac{n_1}{E_1}$ is directly proportional to the value of ${n_1}$ and inversely proportional to the value of ${k_1}$. Then, we obtain
+\begin{equation}\label{eq:2.68}
+   \left(\frac{n_1}{E_1}\right)_{\max}= \frac{n_{\max}}{\mathcal {E}_{1_{{k_{\max}},{n_{\max}}}}}
+\end{equation}
+\begin{equation}\label{eq:2.69}
+   \left(\frac{n_1}{E_1}\right)_{\min}= \frac{n_{\min}}{\mathcal{E}_{1_{{k_{\min}},{n_{\min}}}}}
+\end{equation}
+
+According to analysis mentioned above,  $\mathbf{y}_{\Delta}$ can take the maximum and minimum values through \eqref{eq:2.61} - \eqref{eq:2.69}. When all elements in $\mathbf{y}_{\Delta}$ take their maximum values, we obtain $\left(\mathbf{y}_{\Delta}\right)_{uplim}$. This vector can be substituted into \eqref{eq:2.20} to obtain ${ERR}_{uplim}$. Similarly, when all elements in $\mathbf{y}_{\Delta}$ take their minimum values, we obtain $\left(\mathbf{y}_{\Delta}\right)_{downlim}$, which can be substituted into \eqref{eq:2.21} to determine  ${ERR}_{downlim}$.
+\subsubsection{Average error for the NLOS DDM-4}
+\
+
+First, we define the median values of $\left\{{k_i}, {n_i}\right\}$ as 
+\begin{equation}\label{eq:2.70}
+      {k_{1/2}} \triangleq {k_{\min}}+ \frac{1}{2}({k_{\max}}-{k_{\min}})
+\end{equation}
+\begin{equation}\label{eq:2.71}
+   {n_{1/2}} \triangleq {n_{\min}}+ \frac{1}{2}({n_{\max}}-{n_{\min}})
+\end{equation}
+
+Then, by replacing the variables $k_{\max}$ and $n_{\max}$ with the median ${k_{1/2}}$ and ${n_{1/2}}$, we obtain the vector $(\mathbf{y}_{\Delta})_{aver}$. Bringing it into \eqref{eq:2.22}, the mean relative error  ${ERR}_{aver}$ can be calculated.
+
+From Fig. \ref{fig:Fig6}, we easily clarify that the actual relative error is around 0.3. Specifically, the variation range of average error is between 0.25 and 0.3 with the increase of parameter ${n_{\max}}$, while its variation range is between 0.3 and 0.35 with the increase of parameter ${n_{\min}}$. This means that the newly introduced parameter ${n_i}$ increases the deviation of $\mathbf{x}_{\Delta}$ from the true position vector $\mathbf{x}^0$. Furthermore, the lower bound is almost unchanged. In contrast, the upper bound varies greatly with the increases of parameter ${n_{\max}}$. Generally, the average value shows a slight variation of both parameters ${n_{\min}}$ and ${n_{\max}}$.
+
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.3\textwidth}
+       \centering
+       \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_change_nmax_aver.eps}
+       \caption*{(a)\quad Average error versus ${n_{\max}} $: ${n_{\min}=30}$,
+       \\${{k_{\min}} =0.2}$, ${k_{\max} =0.4}$
+       }
+   \end{minipage}
+   \vspace{0.5cm} % 调整两张图之间的垂直距离
+   \begin{minipage}{0.3\textwidth}
+       \centering
+       \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_change_nmin_aver.eps}
+       \caption*{(b)\quad Average error versus ${n_{\min}} $: ${n_{\max}=80}$,
+       \\${{k_{\min}} =0.2}$, ${k_{\max} =0.4}$}
+   \end{minipage}
+   \vspace{-0.5cm}
+   \caption{Relative error for the NLOS DDM-4.}
+   \label{fig:Fig6}
+\end{figure}
+
+\section{Simulations and Analyses}
+The classical mobile network with seven mobile stations is adopted for simulation. The station coordinates are set as:
+\begin{flalign*}
+  & (0,0),(\sqrt{3}\gamma,0),(\frac{\sqrt{3}}{2}\gamma,\frac{3}{2}\gamma),(-\frac{\sqrt{3}}{2}\gamma,\frac{3}{2}\gamma), \\
+  & (-\sqrt{3}\gamma,0),(-\frac{\sqrt{3}}{2}\gamma,-\frac{3}{2}\gamma),(\frac{\sqrt{3}}{2}\gamma,-\frac{3}{2}\gamma)
+\end{flalign*}
+where the cell radius $\gamma$ is supposed to be 1000m. Besides, the measurement noise is set to be zero mean Gaussian variables whose standard deviation is 20m, the number of simulations is 1000. In addition, the true distance ${r}_{i}^{0}$ is calculated from the BS coordinates and the MS coordinates using the distance formula. Due to the randomness of MS position generation, ${r}_{i}^{0}$ is also random. Furthermore, there is no special requirement for the selection of the reference base station. In this paper, we choose the first base station BS$_1$, as the reference base station.%仿真次数1000次。此外，本文真实距离${r}_{i}^{0}$是由 BS 坐标与 MS 坐标利用距离公式计算得到，并且通过 MS 位置生成的随机性，间接使得真实距离${r}_{i}^{0}$是随机的。更进一步，对于参考基站 BS 的选择没有特殊要求，只是在本文中，我们选择了第一个基站$BS_1$ 作为本文的参考基站。 
+The NLOS error model follows the DDM distribution, and the following four specific DDM cases are taken into account.
+\subsection{Positioning performance for the NLOS DDM-1}
+
+In this subsection and the following three subsections, the TOA-LS, TDOA-LS, TSOA-LS and TPOA-LS based algorithms are chosen to compare with the proposed algorithm, and the LS principle is adopted to solve the localization problem for fairness and algorithm simplicity. Moreover, localization parameters mentioned above can be taken from the simple TOA parameter, which is also the mostly probable choice for practical localization applications.
+% figure7 DDM-1: TROA-LS\TOPA-LS\TOA-LS\TDOA-LS\TSOA-LS
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.3\textwidth}
+       \centering
+       \includegraphics[width=0.9\linewidth,height=0.6\linewidth]{images/f1(a).eps}
+       \caption*{(a)\quad RMSE versus $k$}
+   \end{minipage}
+   \vspace{0.5cm} % 调整两张图之间的垂直距离
+   \begin{minipage}{0.3\textwidth}
+       \centering
+       \includegraphics[width=0.9\linewidth,height=0.6\linewidth]{images/f1(b).eps}
+       \caption*{(b)\quad CDF performance: $k=0.4$}
+   \end{minipage}
+   \vspace{-0.5cm}
+   \caption{The performance comparison for the NLOS DDM-1.}
+   \label{fig:Fig7}
+\end{figure}
+
+Figure \ref{fig:Fig7} compares the RMSE and the CDF performances in the NLOS DDM-1 environment. In Fig. \ref{fig:Fig7}(a), the RMSE increases as $k$ increases for the TOA-LS, TDOA-LS and TSOA-LS positioning. For these algorithms, the curve slope indicates the positioning accuracy, i.e., the smaller the slope, the better the performance of the algorithm. On the contrary, the proposed TROA-LS algorithm as well as the TPOA-LS algorithm makes the RMSE decrease as $k$ increases. Hence, the algorithms based on TROA-LS and TPOA-LS yield RMSEs insensitive to the distance depending factors. Moreover, the TROA-LS method performs better than the TPOA-LS method. Meanwhile, from Fig. \ref{fig:Fig7}(b), it can be seen that the proposed method has more than a 95\% probability of positioning error less than 15m, which is equivalent to 1.5\% of the cell radius. In fact, according to section \uppercase\expandafter{\romannumeral4}${\cdot}$A, the linear DDM makes TROA-LS method reach the positioning performance under the LOS scenario.
+
+\subsection{Positioning performance for the NLOS DDM-2}
+
+%% Figure 8    DDM-2: TROA-LS\TOPA-LS\TOA-LS\TDOA-LS\TSOA-LS
+In this subsection and next two subsections, we first compare the proposed algorithm with simple LS-based algorithms such as TOA-LS, TDOA-LS, TSOA-LS, and TPOA-LS. Furthermore, complicated NLOS mitigating methods sunch as CLS, RWGH and SDP are also included for comparisons. The descriptions of these algorithms are given in Table I, and the proposed algorithm is named TROA-LS. Besides, we also compare the RMSE of TROA-LS algorithm with the RMSE deduced in section \uppercase\expandafter{\romannumeral3}${\cdot}$C, referred to as “Analytical RMSE for TROA-LS”.
+%在本节以及后面的两小节，除了将本文算法与传统算法 TOA、TDOA、TSOA以及 TPOA 进行 RMSE 性能对比外，还体现了利用相对误差平均偏离程度对本文算法的 RMSE 进行推测的结果，并将其命名为 TROA-LS(GUESS). 
+% 表一
+
+\begin{table}[htbp]
+   \centering
+   \renewcommand{\arraystretch}{1.1}\vspace{-0.cm}
+   \caption{Some algorithms for comparison}
+   %\setlength{\tabcolsep}{0.50mm}
+   \begin{center}\vspace{-0cm}
+   \begin{tabular}{cc}
+   %{p{32mm}<{\centering}p{32mm}<{\centering}}
+   \hline
+   Algorithm & Description  \\
+   \hline
+     TROA-LS & The proposed algorithm \\
+   %\hline
+     TPOA-LS & LS algorithm based on TPOA \cite{re33} \\
+     RWGH & Residual weighting algorithm\cite{re34}\\
+     CLS & Constrained LS algorithm\cite{re35}\\
+     SDP & Convex semidefinite programming algorithm\cite{re32}\\
+   \hline
+   \end{tabular}
+   \end{center}\vspace{-0cm}
+   \end{table}
+
+\begin{figure*}[htb!]
+   \centering
+   \begin{minipage}[b]{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm2_change_alpha_RMSE3.eps}\\
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/f4(b).eps}
+      \caption*{(a)\quad RMSE versus ${\alpha}$:\\ ${\beta =0.2}$}
+      \label{Fig8:(a)}
+   \end{minipage}
+      \qquad
+      \begin{minipage}[b]{0.3\linewidth}
+         \centering
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm2_change_beta_RMSE3.eps}\\
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/f5(b).eps}
+         \caption*{(b)\quad RMSE versus ${\beta}$: \\${\alpha =0.3}$}
+         \label{Fig8:(b)}
+      \end{minipage}
+         \qquad
+         \begin{minipage}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm2_change_radius_RMSE3.eps}\\
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/f6(b).eps}
+            \caption*{(c)\quad RMSE versus cell radius:\\ $\alpha$ = 0.3, $\beta$ = 0.2}
+            \label{Fig8:(c)}
+         \end{minipage}
+
+         \caption{The performance comparison for the NLOS DDM-2.}
+         \label{fig:Fig8}
+\end{figure*}
+
+From Fig. \ref{fig:Fig8}, we clearly see the consistence between the simulated RMSE and the analytical RMSE for TROA-LS method. In Fig. \ref{fig:Fig8}(a), with the increase of ${\alpha}$, RMSE of $\left\{\text{TOA-LS, TDOA-LS, TSOA-LS}\right\}$ as well as $\left\{\text{CLS, RWGH, SDP}\right\}$ methods degrade rapidly, while the TPOA-LS and TROA-LS algorithms are more robust and produce fewer localization errors. In addition, the proposed TROA-LS algorithm outperforms the TPOA-LS algorithm.
+
+In Fig. \ref{fig:Fig8}(b), the variable $\beta$ is varying, which determines the deviation degree from the linear DDM. As a result, the TROA-LS, TPOA-LS and CLS algorithms perform differently from other algorithms. Specifically, the CLS, TPOA-LS and TROA-LS algorithms are sensitive to $\beta$, but their positioning accuracy are still better than those of other algorithms. Besides, the proposed algorithm outperforms the CLS and TPOA-LS algorithms. At typical DDM-2 parameters $\left({\alpha} = 0.3, {\beta} = 0.4\right)$, the proposed algorithm produces RMSE of 30.5m, nearly 3.05\% of cell radius. On the other hand, other five methods are not sensitive to the $\beta$ variation, i.e., they are not sensitive to the linear degree of NLOS error.
+
+In Fig. \ref{fig:Fig8}(c), the cell radius is changed in simulation, and its effect on positioning accuracy is presented. From this subfigure, we explicitly see that the RMSE of all algorithms increase with increased cell radius, while the proposed TROA-LS algorithm yields the smallest rising rate. However, $\frac{\text{RMSE}}{\text{cell radius}}$ of TROA-LS algorithm remains almost unchanged, which proves that TROA-LS algorithm is robust to cell radius.
+ \subsection{Positioning performance for the NLOS DDM-3}
+
+ \begin{figure*}[htb!]
+   \centering
+   \begin{minipage}[b]{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm3_change_kmax_RMSE3.eps}\\
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/DDM3-diff-change-kmax-RMSE1.eps}
+      \caption*{(a)\quad RMSE versus ${k_{\max}}$:
+      \\${{k_{\min}} =0.1}$}
+      \label{Fig9:(a)}
+   \end{minipage}
+      \qquad
+      \begin{minipage}[b]{0.3\linewidth}
+         \centering
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm3_change_kmin_RMSE3.eps}\\
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/DDM3-diff-change-kmin-RMSE1.eps}
+         \caption*{(b)\quad RMSE versus ${k_{\min}}$:\\ ${k_{\max} =0.6}$}
+         \label{Fig9:(b)}
+      \end{minipage}
+         \qquad
+         \begin{minipage}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm3_change_radius_RMSE3.eps}\\
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/DDM3-radius.eps}
+            \caption*{(c)\quad RMSE versus cell radius:\\ ${{k_{\min}} =0.2}$, ${k_{\max} =0.4}$
+            }
+            \label{Fig9:(c)}
+         \end{minipage}
+         \caption{The performance comparison for the NLOS DDM-3.}
+         \label{fig:Fig9}
+\end{figure*}
+\begin{figure*}[htb!]
+   \centering
+   \begin{minipage}[b]{0.3\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_change_nmax_RMSE3.eps}\\
+      \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_diff_change_nmax_RMSE.eps}
+      \caption*{
+         (a)\quad RMSE versus ${n_{\max}}$:\\ ${n_{\min} = 30m}$
+      }
+      \label{Fig10:(a)}
+   \end{minipage}
+      \qquad
+      \begin{minipage}[b]{0.3\linewidth}
+         \centering
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_change_nmin_RMSE3.eps}\\
+         \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_diff_change_nmin_RMSE.eps}
+         \caption*{(b)\quad RMSE versus ${n_{\min}}$:\\ ${n_{\max} =80m}$}
+         \label{Fig10:(b)}
+      \end{minipage}
+         \qquad
+         \begin{minipage}[b]{0.3\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/ddm4_change_radius_RMSE3.eps}\\
+            \includegraphics[width=0.9\linewidth,height=0.67\linewidth]{images/DDM4-radius.eps}
+            \caption*{(c)\quad RMSE versus cell radius}
+            \label{Fig10:(c)}
+         \end{minipage}
+         \caption{The performance comparison for the NLOS DDM-4. (${{k_{\min}} =0.2}$, ${k_{\max} =0.4}$)}
+         \label{fig:Fig10}
+\end{figure*}
+
+The simulation results of RMSE performance under the NLOS DDM-3 model are shown in Fig. \ref{fig:Fig9}. From Fig. \ref{fig:Fig9}(a), when ${k_{\min}}$ is fixed, the localization accuracy of all algorithms decreases as ${k_{\max}}$ increases. Among tested algorithms, the TROA-LS and TPOA-LS algorithms show slower accuracy decrease. Additionally, the TPOA-LS algorithm is worse than the proposed algorithm. Analogous to Fig. \ref{fig:Fig8}, the analytical RMSE and the simulated are close and consistent.
+
+In Fig. \ref{fig:Fig9}(b), ${k_{min}}$ is changed to modify the derivation degree from the linear DDM-1. With the increased ${k_{min}}$, the corresponding RMSE of $\left\{\text{TOA-LS, TSOA-LS}\right\}$ and $\left\{\text{CLS, RWGH, SDP}\right\}$ algorithms increase, in which the CLS algorithm shows the most significant increasement. In contrast, the RMSE of $\left\{\text{TROA-LS, TDOA-LS, TPOA-LS}\right\}$ algorithms decrease at this time, and the proposed algorithm maintains the best RMSE performance. At typical DDM-3 parameters $\left({k_{\min}} = 0.3, {k_{\max}} = 0.6\right)$, the proposed algorithm produces an RMSE of 49m, which is close to 4.9\% of the cell radius.
+
+In Fig. \ref{fig:Fig9}(c), the cell radius is changed in simulation, and its effect on positioning accuracy is presented. From this subfigure, we explicitly see that the RMSE of all tested methods increase with increased cell radius, while the proposed TROA-LS method yields the smallest rising rate. However,{$\frac{\text{RMSE}}{\text{cell radius}}$} of TROA-LS method remains almost unchanged, which proves that TROA-LS algorithm is robust to cell radius.
+\subsection{Positioning performance for the NLOS DDM-4}
+
+Figure \ref{fig:Fig10} presents the simulation results under the NLOS DDM-4 model, in which we explicitly see the consistence between the simulated RMSEs and the analytical RMSE for TROA-LS method. In Fig. \ref{fig:Fig10}(a), the RMSE of all tested algorithms vary slightly with the increased$n_{\max}$. Analogously, in Fig. \ref{fig:Fig10}(b), the RMSE of all tested algorithms also show slight variations with the increased $n_{\min}$. However, the proposed algorithm maintains the lowest RMSE and produces the least localization error. At typical DDM-4 parameters $\left({n_{\min}} = 40m, {n_{\max}} = 50m\right)$, the proposed algorithm produces RMSE about 67m, nearly 6.7\% of cell radius.\\
+\indent In Fig. \ref{fig:Fig10}(c), the cell radius is changed in simulation, and its effect on positioning accuracy is presented. From this subfigure, we explicitly see that the RMSE of all algorithms increase with increased cell radius, while the proposed TROA-LS algorithm yields the smallest rising rate. However, $\frac{\text{RMSE}}{\text{cell radius}}$ of TROA-LS method remains almost unchanged, which proves that TROA-LS algorithm is robust to cell radius.
+
+\section{CONCLUSION}
+
+Precise wireless positioning is required for wireless systems and IoT applications, but when the GNSS is denied in certain scenarios, NLOS error has become a great issue significantly degrading the positioning accuracy. Moreover, when there are only NLOS measurements, the serious performance degradation must be taken into conderadion. Therefore, in order to reduce the NLOS influence at pure NLOS environments, we define a new TROA variable, and then a novel TROA-based localization algorithm is proposed. Besides, the analytical performance analysis is presented to evaluate the positioning error. Then, both simulation and analytical evalution demonstrate that the proposed algorithm outperforms other methods, and improve the localization performance in critical NLOS scenarios, while the LS principle ensures acceptable complexity. Specifically, the proposed algorithm shows a strong anti-NLOS ability in the DDM NLOS environment. In a typical DDM scenario, sunch as DDM-2 $\left({\alpha} = 0.3, {\beta} = 0.4\right)$, its RMSE achieves 30.5m, about 3.05\% of cell radius.
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
+
+% use section* for acknowledgment
+%\section*{Acknowledgment}
+
+
+%The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+%\bibliographystyle{unsrt}
+
+\bibliography{myref2}
+%\bibliographystyle{IEEEtran}
+\bibliographystyle{myplainnat}
+%\bibliographystyle{unsrt}
+
+
+
+%\bibliography{myref}
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+%\end{thebibliography}
+
+
+% biography section
+%
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+
+
+% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+\begin{IEEEbiography}
+   [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/Wen.eps}}]				                                          {Jiangang~Wen}
+    was born
+   in 1989. He received the B.S. degree of electronic and information engineering in 2012, and the
+   Ph.D. degree of Control Science and Engineering
+   in 2019, both from the Zhejiang University of
+   Technology, Hangzhou, China. Currently, he is
+   a teacher at Zhejiang Gongshang University. His
+   research interests include optimization, digital
+   filtering, multicarrier system and wireless localization.
+   \end{IEEEbiography}
+   
+
+
+   \begin{IEEEbiography}
+      [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/Fws.eps}}]				
+                  {Wenshu~Feng}
+      was born in Shandong province, China in 2001. She received the B.S. degree of communication engineering in 2022 from Zhejiang Gongshang University. Currently, she is a graduate student at Zhejiang Gongshang University. Her research interests include wireless communications and wireless positioning.
+      \end{IEEEbiography}
+
+
+
+   \begin{IEEEbiography}
+   [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/Jingyu_HUA.eps}}]				                                          {Jingyu~Hua}
+   was born in
+   Zhejiang province, China in 1978. He received the
+   B.S. and M.S. degrees in electronic engineering
+   from the South China University of Technology,
+   Guangzhou, China, in 1999 and 2002. Then in
+   2006, he received the Ph.D. degree in electronic
+   engineering from Southeast University, Nanjing,
+   China. Since 2006, he had joined Zhejiang University of Technology as an assistant professor in the
+   electronic engineering department, and promoted
+   as full professor in 2012. From 2019, he is with Zhejiang Gongshang
+   University as a distinguish professor. He is the author of more than 200
+   articles and more than 20 inventions. His research interests include the area
+   of parameter estimation, channel modeling, wireless localization and digital
+   filtering in wireless communications. He is currently an associate editor for
+   the IEEE Transactions on Instrumentation and Measurements.
+   \end{IEEEbiography}
+   
+   
+   
+   \begin{IEEEbiography}
+   	[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/Ni.eps}}]				
+                  {Zhengwei~Ni}
+   received the B.E. degree in communication engineering and the
+   M.E. degree in communication and information
+   systems from the Beijing University of Posts and
+   Telecommunications, Beijing, China, in 2011 and
+   2014, respectively, and the Ph.D. degree from
+   the National University of Singapore. He is currently an Associate Professor with Zhejiang Gongshang University. His research interests include
+   information theory, machine learning, and wireless communications.
+   \end{IEEEbiography}
+   
+
+   
+   \begin{IEEEbiography}
+      [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/zouyuanping.eps}}]
+  {Yuanping~Zou}
+   received the Ph.D. degree from the Nanjing University of Posts and Telecommunications, Nanjing, China, in 2008.
+   She is currently an Associate Professor with
+   the School of Information and Electronic Engineering, Zhejiang Gongshang University, Hangzhou, China.
+   Her research interests include next generation communication networks, resource allocation over wireless networks, networks flows algorithms and applications.
+   \end{IEEEbiography}
+
+
+
+   \begin{IEEEbiography}
+      [{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{images/Wang.eps}}]
+                         {Dongming~Wang}
+      received the B.E. degree in communication engineering and the
+      M.E. degree in communication and information
+      systems from the Beijing University of Posts and
+      Telecommunications, Beijing, China, in 2011 and
+      2014, respectively, and the Ph.D. degree from
+      the National University of Singapore. He is currently an Associate Professor with Zhejiang Gongshang University. His research interests include
+      information theory, machine learning, and wireless communications.
+      \end{IEEEbiography}
+
+
+% that's all folks
+\end{document}
+
+
